@@ -16,7 +16,6 @@
 ### Association
 
 - has_many :items
-- has_many :buys
 - has_many :historys
 
 ## items テーブル
@@ -36,26 +35,24 @@
 ### Association
 
 - belongs_to :user
-- has_one :buy
 - has_one :history
 
 ## buys テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal_id     | integer    | null: false                    |
+| postal_id     | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone         | string     | null: false                    |
 | user          | references | null: false, foreign_key: true |
+| history       | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :buy
-- has_one :history
+- belongs_to :history
 
 ## historys テーブル
 
@@ -68,4 +65,4 @@
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :buy
+- has_one :buy

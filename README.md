@@ -47,7 +47,6 @@
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone         | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
 | history       | references | null: false, foreign_key: true |
 
 ### Association

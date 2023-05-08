@@ -20,12 +20,12 @@
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| Product     | string     | null: false                    |
+| product     | string     | null: false                    |
 | description | text       | null: false                    |
 | category    | string     | null: false                    |
 | condition   | string     | null: false                    |
 | charge      | string     | null: false                    |
-| Area        | string     | null: false                    |
+| area        | string     | null: false                    |
 | day         | integer    | null: false                    |
 | price       | integer    | null: false                    |
 | user_id     | references | null: false, foreign_key: true |
@@ -46,7 +46,7 @@
 | prefecture | string     | null: false                    |
 | city       | string     | null: false                    |
 | address    | string     | null: false                    |
-| Building   | string     |                                |
+| building   | string     |                                |
 | phone      | integer    | null: false                    |
 | user_id    | references | null: false, foreign_key: true |
 

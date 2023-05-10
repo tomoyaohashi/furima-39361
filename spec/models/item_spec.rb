@@ -29,7 +29,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'カテゴリーが空では出品できない' do
-        @item.category_id = ''
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
@@ -72,6 +72,11 @@ RSpec.describe Item, type: :model do
         @item.price = '１０００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+      it 'userが紐付いていなければ出品できない' do
+        @item = FactoryBot.build(:item, user: nil)
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

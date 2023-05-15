@@ -7,5 +7,7 @@ FactoryBot.define do
     building { Faker::Address.secondary_address }
     phone { Faker::Number.number(digits: 10) }
     token { Faker::Internet.password(min_length: 10, max_length: 20) }
+
+    
   end
 end

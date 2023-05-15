@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe HistoryBuy, type: :model do
   before do
-    @buy = FactoryBot.build(:history_buy)
+    item = FactoryBot.create(:item)
+    user = FactoryBot.create(:user)
+    @buy = FactoryBot.build(:history_buy, user_id: user.id, item_id: item.id)
   end
-
+ 
   describe '商品購入' do
     context '商品を購入できる場合' do
       it ' 必要な情報を適切に入力すると商品の購入ができる' do
@@ -80,15 +82,14 @@ RSpec.describe HistoryBuy, type: :model do
       expect(@buy.errors.full_messages).to include("Token can't be blank")
     end
     it 'userが紐付いていなければ購入できない' do
-      @history = FactoryBot.build(:history)
-      @history.user_id = nil
+      @buy.user_id = nil
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('')
+      expect(@buy.errors.full_messages).to include("User can't be blank")
     end
     it 'itemが紐付いていなければ購入できない' do
-      @buy.history = nil
+      @buy.item_id = nil
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('')
+      expect(@buy.errors.full_messages).to include("Item can't be blank")
     end
   end
 end

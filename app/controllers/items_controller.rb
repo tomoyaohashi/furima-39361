@@ -24,8 +24,11 @@ class ItemsController < ApplicationController
 
   def edit
     if !user_signed_in?
+      
       redirect_to user_session_path
     elsif @item.user_id != current_user.id
+      redirect_to root_path
+    elsif History.exists?(item_id: params[:id])
       redirect_to root_path
     end
   end

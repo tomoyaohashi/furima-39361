@@ -1,6 +1,6 @@
 class HistoryBuy
   include ActiveModel::Model
-  attr_accessor :postal_id, :prefecture_id, :city, :address, :building, :phone, :user_id, :item_id, :card_number, :card_month, :card_year, :card_cvc 
+  attr_accessor :postal_id, :prefecture_id, :city, :address, :building, :phone, :user_id, :item_id, :token 
 
 
   validates :postal_id, presence: true, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
@@ -12,6 +12,8 @@ class HistoryBuy
 
   validates :user_id, presence: true
   validates :item_id, presence: true
+
+  validates :token, presence: true
 
   def save
     history = History.create(user_id: user_id, item_id: item_id)

@@ -4,13 +4,9 @@ class HistoryBuy
 
   validates :postal_id, presence: true, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :city, presence: true
-  validates :address, presence: true
+  validates :city, :address, :phone, presence: true
   validates :building, presence: true, allow_blank: true
-  validates :phone, presence: true, format: { with: /\A[0-9]{10,11}\z/, message: 'should be 10 to 11 digits' }
-
-  validates :user_id, presence: true
-  validates :item_id, presence: true
+  validates :phone, format: { with: /\A[0-9]{10,11}\z/, message: 'should be 10 to 11 digits' }
 
   validates :token, presence: true
 

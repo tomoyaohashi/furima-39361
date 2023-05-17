@@ -28,22 +28,22 @@ RSpec.describe HistoryBuy, type: :model do
     it '郵便番号がハイフンがないと購入できない' do
       @buy.postal_id = '1231234'
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('Postal is invalid. Include hyphen(-)')
+      expect(@buy.errors.full_messages).to include('Postal にハイフンを入力してください')
     end
     it '郵便番号が８桁以上では購入できない' do
       @buy.postal_id = '123-45678'
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('Postal is invalid. Include hyphen(-)')
+      expect(@buy.errors.full_messages).to include('Postal にハイフンを入力してください')
     end
     it '郵便番号が6桁以下では購入できない' do
       @buy.postal_id = '123-456'
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('Postal is invalid. Include hyphen(-)')
+      expect(@buy.errors.full_messages).to include('Postal にハイフンを入力してください')
     end
     it '都道府県が空では購入できない' do
       @buy.prefecture_id = '1'
       @buy.valid?
-      expect(@buy.errors.full_messages).to include("Prefecture can't be blank")
+      expect(@buy.errors.full_messages).to include("Prefecture を入力してください")
     end
     it '市区町村が空では購入できない' do
       @buy.city = ''
@@ -63,17 +63,17 @@ RSpec.describe HistoryBuy, type: :model do
     it '電話番号が全角数値では購入できない' do
       @buy.phone = '１２３４５６７８９０１'
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('Phone should be 10 to 11 digits')
+      expect(@buy.errors.full_messages).to include('Phone は10文字以上11以内で入力してください')
     end
     it '電話番号が12桁以上では購入できない' do
       @buy.phone = '123456789012'
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('Phone should be 10 to 11 digits')
+      expect(@buy.errors.full_messages).to include('Phone は10文字以上11以内で入力してください')
     end
     it '電話番号が9桁以内では購入できない' do
       @buy.phone = '123456789'
       @buy.valid?
-      expect(@buy.errors.full_messages).to include('Phone should be 10 to 11 digits')
+      expect(@buy.errors.full_messages).to include('Phone は10文字以上11以内で入力してください')
     end
 
     it 'tokenが空では購入できない' do

@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
       it '商品画像が空では出品できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("Image を選択してください")
       end
       it '商品名が空では出品できない' do
         @item.product = ''
@@ -31,27 +31,27 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーが空では出品できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を入力してください")
       end
       it '商品状態が空では出品できない' do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition を入力してください")
       end
       it '配送料の負担が空では出品できない' do
         @item.charge_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charge can't be blank")
+        expect(@item.errors.full_messages).to include("Charge を入力してください")
       end
       it '発送元の地域が空では出品できない' do
         @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture を入力してください")
       end
       it '発送までの日数が空では出品できない' do
         @item.day_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day can't be blank")
+        expect(@item.errors.full_messages).to include("Day を入力してください")
       end
       it '価格が空では出品できない' do
         @item.price = ''
